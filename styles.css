@@ -1,0 +1,296 @@
+/* root styles */
+
+:root {
+    --dark-red: #F87060;
+    --med-red: #FF887A;
+    --light-red: #FFB7AE;
+    --dark-green: #00A6A0;
+    --med-green: #07BEB8;
+    --light-green: #3FC5C1;
+    --dark-yellow: #FFE661;
+    --med-yellow: #FFEB83;
+    --light-yellow: #FFF2B0;
+}
+
+
+
+/* Header Styles */
+p, a {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    color: inherit;
+}
+
+nav {
+    max-width: 80%;
+    margin: 0 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.25rem;
+}
+
+.menu-icon {
+    display: block;
+    width: 30px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.menu-icon .bar {
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    border-radius: 10px;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    background-color: #333;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 50%;
+    text-align: center;
+}
+
+.nav-links.active {
+    display: block;
+}
+
+/* Landing page section styles */
+
+.landing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+
+}
+
+.landing .yellow-block {
+    width: 50vw;
+    height: 100vh;
+    background-color: var(--dark-yellow);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.intro-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.landing .intro-container h1 {
+    font-family: 'Nunito Sans', sans-serif;
+    display: block;
+    opacity: 1;
+    font-weight: 700;
+    font-size: 3.5rem;
+    text-align: center;
+    position: relative;
+    animation: welcomeText 250ms 1 ease-in-out;
+}
+
+.landing .intro-container h2 {
+    font-family: 'Nunito', sans-serif;
+    display: block;
+    font-weight: 500;
+    font-size: 1.25rem;
+    text-align: center;
+    padding-top: 4rem;
+    border-bottom: transparent solid 2px;
+}
+
+.landing .intro-container h2 {
+    font-family: 'Nunito', sans-serif;
+    display: block;
+    width: fit-content;
+    font-weight: 500;
+    font-size: 1.25rem;
+    text-align: center;
+    position: relative; /* Required for the pseudo-element positioning */
+}
+
+.landing .intro-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--dark-red);
+    transition: width 0.25s ease-in-out;
+}
+
+.landing .intro-container h2:hover::after {
+    width: 100%; /* Expands the width of the border on hover */
+}
+.landing .intro-container h1 span {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: var(--dark-green);
+    position: relative;
+    bottom: 0;
+    margin-left: 2px;
+}
+
+@keyframes welcomeText {
+  0% {
+    transform: translateY(-150px);
+    opacity: 0;
+  }
+  25% {
+    opacity: .25;
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+  70% {
+    opacity: 0.9;
+    transform: translateY(-20px);
+  }
+  85% {
+    transform: translateY(5px);
+  }
+  92% {
+    transform: translateY(-10px);
+  }
+  97% {
+    transform: translateY(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Font formatting */
+
+/* nunito-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/nunito-v26-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* nunito-500 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/nunito-v26-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* nunito-700 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/nunito-v26-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+  /* nunito-sans-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/nunito-sans-v15-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* nunito-sans-500 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/nunito-sans-v15-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* nunito-sans-700 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/nunito-sans-v15-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* nunito-sans-800 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 800;
+    src: url('../fonts/nunito-sans-v15-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+
+
+
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  /*
+    2. Remove default margin
+  */
+  * {
+    margin: 0;
+  }
+  /*
+    Typographic tweaks!
+    3. Add accessible line-height
+    4. Improve text rendering
+  */
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  /*
+    5. Improve media defaults
+  */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  /*
+    6. Remove built-in form typography styles
+  */
+  input, button, textarea, select {
+    font: inherit;
+  }
+  /*
+    7. Avoid text overflows
+  */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  /*
+    8. Create a root stacking context
+  */
+  #root, #__next {
+    isolation: isolate;
+  }
