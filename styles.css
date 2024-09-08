@@ -12,7 +12,9 @@
     --light-yellow: #FFF2B0;
 }
 
-
+html {
+  scroll-behavior: smooth;
+}
 
 /* Header Styles */
 p, a {
@@ -52,6 +54,22 @@ nav a {
     transition: 0.4s;
 }
 
+h1 {
+  font-family: 'Nunito Sans', sans-serif;
+  display: block;
+  font-weight: 700;
+  font-size: 3.5rem;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Nunito', sans-serif;
+  display: block;
+  font-weight: 500;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
 .nav-links {
     list-style: none;
     padding: 0;
@@ -61,34 +79,39 @@ nav a {
     position: absolute;
     top: 50px;
     right: 0;
-    width: 50%;
+    width: 100%;
     text-align: center;
+}
+.nav-links li {
+  padding: 2rem 0;
 }
 
 .nav-links.active {
+    z-index: 100;
     display: block;
+    animation: headerSlide 300ms ease 1;
 }
 
 /* Landing page section styles */
 
-.landing {
+.landing, .transition {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     width: 100vw;
-    height: 100vh;
-
+    min-height: 100vh;
 }
 
 .landing .yellow-block {
     width: 50vw;
-    height: 100vh;
+    height: 100%;
     background-color: var(--dark-yellow);
     position: absolute;
     top: 0;
     left: 0;
     z-index: -1;
+    animation: blockSlide 300ms ease-in-out 1;
 }
 
 .intro-container {
@@ -105,17 +128,19 @@ nav a {
     font-size: 3.5rem;
     text-align: center;
     position: relative;
-    animation: welcomeText 250ms 1 ease-in-out;
+    animation: welcomeText 350ms 1 ease-in-out;
 }
 
 .landing .intro-container h2 {
     font-family: 'Nunito', sans-serif;
     display: block;
+    opacity: 1;
     font-weight: 500;
     font-size: 1.25rem;
     text-align: center;
     padding-top: 4rem;
     border-bottom: transparent solid 2px;
+    animation: welcomeText 500ms 1 ease-in-out;
 }
 
 .landing .intro-container h2 {
@@ -128,10 +153,10 @@ nav a {
     position: relative; /* Required for the pseudo-element positioning */
 }
 
-.landing .intro-container h2::after {
+.landing .intro-container .about-me::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: 0;
     left: 0;
     width: 0;
     height: 2px;
@@ -139,8 +164,9 @@ nav a {
     transition: width 0.25s ease-in-out;
 }
 
-.landing .intro-container h2:hover::after {
-    width: 100%; /* Expands the width of the border on hover */
+.landing .intro-container .about-me:hover::after {
+    width: 80%; /* Expands the width of the border on hover */
+    margin: 0 10%;
 }
 .landing .intro-container h1 span {
     display: inline-block;
@@ -151,6 +177,193 @@ nav a {
     position: relative;
     bottom: 0;
     margin-left: 2px;
+    animation: welcomeText 600ms 1 ease-in-out;
+}
+
+.about-me {
+  padding: .8rem;
+  margin-bottom: 3rem;
+  border: solid 1px var(--dark-green);
+  background-color: var(--light-green);
+  opacity: .8;
+  color: var(--dark-yellow);
+  border-radius: 25px;
+}
+
+.landing .intro-container svg {
+  margin-top: 3rem;
+  height: 35px;
+  width: 35px;
+  display: block;
+  opacity: 0;
+}
+.landing .intro-container svg.active {
+  opacity: 1;
+  animation: continuousBounce 800ms ease-in-out infinite;
+}
+
+/* Introduction sections styles */
+#introduction {
+  position: relative;
+  width: 100vw;
+  padding: 2rem 0;
+  min-height: auto;
+}
+
+#introduction .intro-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem 0;
+  color: white;
+}
+
+#introduction .intro-content h2 {
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+#introduction .intro-content p {
+  margin-bottom: 2rem;
+}
+
+#introduction .intro-content img {
+  max-height: 300px;
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  margin-top: 1rem;
+}
+
+#introduction .green-block {
+  width: 90vw;
+  padding: 6rem;
+  background-color: var(--dark-green);
+  position: absolute;
+  top: 5%;
+  right: 0;
+  z-index: -1;
+  animation: blockSlide 300ms ease-in-out 1;
+}
+
+#introduction .intro-content div {
+  color: var(--dark-green);
+  text-align: left;
+}
+
+/* Initial hidden state for the intro content */
+#introduction .intro-content > * {
+  opacity: 0;
+  transform: translateY(50px); /* Start slightly below its final position */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* When the section is visible */
+#introduction .intro-content > .in-view {
+  opacity: 1;
+  transform: translateY(0); /* Move back to its original position */
+}
+
+/* Transition slide styles */
+.transition {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh; /* Full-screen height for the red block */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.transition .intro-container h1 {
+  font-family: 'Nunito Sans', sans-serif;
+  display: block;
+  opacity: 1;
+  font-weight: 700;
+  font-size: 3.5rem;
+  text-align: center;
+  position: relative;
+  animation: welcomeText 350ms 1 ease-in-out;
+  color: var(--dark-yellow);
+}
+
+.transition .intro-container h1 span {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: var(--dark-yellow);
+  position: relative;
+  bottom: 0;
+  margin-left: 3px;
+  animation: welcomeText 600ms 1 ease-in-out;
+}
+
+.transition .red-block {
+  width: 50vw;
+  height: 100vh;
+  background-color: var(--dark-red);
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  animation: blockSlide 300ms ease-in-out 1;
+}
+
+.transition .green-block {
+  width: 90vw;
+  padding: 5rem;
+  background-color: var(--dark-green);
+  position: absolute;
+  left: 0;
+  z-index: -10;
+  animation: blockSlide 300ms ease-in-out 1;
+}
+
+
+
+
+@keyframes continuousBounce {
+  0% {
+    transform: translateY(-40px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  65% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(-40px);
+  }
+
+}
+
+@keyframes headerSlide {
+  from {
+    transform: translateY(-200px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes blockSlide {
+  from {
+    transform: translateX(-1000px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes welcomeText {
