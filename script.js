@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Create the Intersection Observer
     const observerOptions = {
-      threshold: 0.1 // Trigger when 10% of the element is visible
+      threshold: 0.8 // Trigger when 10% of the element is visible
     };
   
     const observer = new IntersectionObserver(observerCallback, observerOptions);
