@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const transitionChildren = document.querySelectorAll('.transition > *');
   
     // Intersection Observer callback function
-    const observerCallback = (entries, observer) => {
+    const observerCallback = (entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           // Add the 'in-view' class when the element is in view
@@ -71,5 +71,35 @@ document.addEventListener("DOMContentLoaded", () => {
     transitionChildren.forEach(child => {
       observer.observe(child);
     });
-  });  
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Select all direct children of the .transition section
+    const redBlock = document.querySelector('.transition .red-block');
+    const greenBlock = document.querySelector('.transition .green-block');
+    const textContent = document.querySelector('.transition .intro-container h1');
+    const period = document.querySelector('.transition .intro-container h1 span');
+  
+    // Intersection Observer callback function
+    const observerCallback = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Add the 'in-view' class when the element is in view
+          entry.target.classList.add('in-view');
+        }
+      });
+    };
+  
+    // Create the Intersection Observer
+    const observerOptions = {
+      threshold: 0.1 // Trigger when 10% of the element is visible
+    };
+  
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+  
+    observer.observe(redBlock);
+    observer.observe(greenBlock);
+    observer.observe(textContent);
+    observer.observe(period);
+  }); 
   

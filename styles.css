@@ -301,7 +301,6 @@ h2 {
   position: relative;
   bottom: 0;
   margin-left: 3px;
-  animation: welcomeText 600ms 1 ease-in-out;
 }
 
 .transition .red-block {
@@ -311,8 +310,8 @@ h2 {
   position: absolute;
   top: 0;
   right: 0;
+  opacity: 0;
   z-index: -1;
-  animation: blockSlide 300ms ease-in-out 1;
 }
 
 .transition .green-block {
@@ -321,11 +320,32 @@ h2 {
   background-color: var(--dark-green);
   position: absolute;
   left: 0;
+  opacity: 0;
   z-index: -10;
-  animation: blockSlide 300ms ease-in-out 1;
 }
 
+/* When the section is visible */
+.transition .red-block.in-view {
+  animation: blockSlideRight 350ms ease-in-out 1;
+  opacity: 1;
+}
 
+/* When the section is visible */
+.transition .green-block.in-view {
+  animation: blockSlide 350ms ease-in-out 1;
+  opacity: 1;
+}
+
+.transition .intro-container h1.in-view {
+  animation: welcomeText 350ms 1 ease-in-out;
+  opacity: 1;
+}
+
+/* When the section is visible */
+.transition .intro-container h1 span.in-view {
+  animation: welcomeText 600ms 1 ease-in-out;
+  opacity: 1;
+}
 
 
 @keyframes continuousBounce {
@@ -358,6 +378,17 @@ h2 {
 @keyframes blockSlide {
   from {
     transform: translateX(-1000px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes blockSlideRight {
+  from {
+    transform: translateX(500px);
     opacity: 0;
   }
   to {
