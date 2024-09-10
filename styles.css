@@ -397,6 +397,7 @@ h3 {
 
 .projects .intro-content .header-content {
   display: flex;
+  justify-content: center;
 }
 
 .projects h2 {
