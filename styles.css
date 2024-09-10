@@ -474,7 +474,7 @@ h3 {
   display: inline-block;
   opacity: 0;
   transform: translateY(-100px); /* Start above */
-  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+  transition: transform 0.25s ease-out, opacity 0.25s ease-out;
 }
 
 /* Letters drop into view when .in-view is added */
@@ -488,25 +488,25 @@ h3 {
   transition-delay: 0s;
 }
 .header-content h1:nth-child(2) {
-  transition-delay: 0.1s;
+  transition-delay: 0.05s;
 }
 .header-content h1:nth-child(3) {
-  transition-delay: 0.2s;
+  transition-delay: 0.1s;
 }
 .header-content h1:nth-child(4) {
-  transition-delay: 0.3s;
+  transition-delay: 0.15s;
 }
 .header-content h1:nth-child(5) {
-  transition-delay: 0.4s;
+  transition-delay: 0.2s;
 }
 .header-content h1:nth-child(6) {
-  transition-delay: 0.5s;
+  transition-delay: 0.25s;
 }
 .header-content h1:nth-child(7) {
-  transition-delay: 0.6s;
+  transition-delay: 0.3s;
 }
 .header-content h1:nth-child(8) {
-  transition-delay: 0.7s;
+  transition-delay: 0.35s;
 }
 
 

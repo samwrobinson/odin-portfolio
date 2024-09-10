@@ -112,9 +112,6 @@ const observer = new IntersectionObserver(entries => {
     if (entry.isIntersecting) {
       // Add the class 'in-view' to letters when they are in view
       entry.target.classList.add('in-view');
-    } else {
-      // Optionally remove the class if you want it to reset when out of view
-      entry.target.classList.remove('in-view');
     }
   });
 });
