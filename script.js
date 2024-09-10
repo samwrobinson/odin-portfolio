@@ -103,3 +103,23 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(period);
   }); 
   
+// Select all the h1 elements
+const letters = document.querySelectorAll('.header-content h1');
+
+// Create an intersection observer
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Add the class 'in-view' to letters when they are in view
+      entry.target.classList.add('in-view');
+    } else {
+      // Optionally remove the class if you want it to reset when out of view
+      entry.target.classList.remove('in-view');
+    }
+  });
+});
+
+// Observe each letter
+letters.forEach(letter => {
+  observer.observe(letter);
+});
