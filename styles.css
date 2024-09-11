@@ -307,6 +307,7 @@ h3 {
 
 /* When the section is visible */
 #introduction .intro-content > .in-view {
+  padding-top: 1rem;
   opacity: 1;
   width: 100%;
   transform: translateY(0); /* Move back to its original position */
@@ -469,45 +470,128 @@ h3 {
   height: 100%;
 }
 
-/* Initial state of letters */
-.header-content h1 {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(-100px); /* Start above */
-  transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+.projects .intro-content .header-content {
+  display: flex;
 }
 
-/* Letters drop into view when .in-view is added */
-.header-content h1.in-view {
+/* Initial state of letters */
+.projects .intro-content .header-content h1 {
+  display: inline-block;
+  opacity: 0;
+  height: fit-content;
+}
+
+.projects .intro-content .header-content span {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: var(--dark-yellow);
+  position: relative;
+  margin-left: 3px;
+  margin-top: 47px;
   opacity: 1;
-  transform: translateY(0); /* Drop to original position */
+}
+
+/* When the section is visible */
+.projects .intro-content .header-content h1.in-view {
+  animation: welcomeText 600ms 1 ease-in-out;
+  opacity: 1;
+}
+
+/* When the section is visible */
+.projects .intro-content .header-content span.in-view {
+  animation: welcomeText 900ms 1 ease-in-out;
+  opacity: 1;
 }
 
 /* Staggered effect for each letter */
-.header-content h1:nth-child(1) {
-  transition-delay: 0s;
+.projects .intro-content .header-content span {
+  animation-delay: 0.99s;
 }
-.header-content h1:nth-child(2) {
-  transition-delay: 0.05s;
+
+.projects .intro-content .header-content h1:nth-child(odd) {
+  color: var(--dark-green);
 }
-.header-content h1:nth-child(3) {
-  transition-delay: 0.1s;
+
+.projects .intro-content .header-content h1:nth-child(even) {
+  color: var(--dark-red);
 }
-.header-content h1:nth-child(4) {
-  transition-delay: 0.15s;
+
+.projects .intro-content .header-content h1:nth-child(1) {
+  animation-delay: 0s;
 }
-.header-content h1:nth-child(5) {
-  transition-delay: 0.2s;
+.projects .intro-content .header-content h1:nth-child(2) {
+  animation-delay: 0.1s;
 }
-.header-content h1:nth-child(6) {
-  transition-delay: 0.25s;
+.projects .intro-content .header-content h1:nth-child(3) {
+animation-delay: 0.38s;
 }
-.header-content h1:nth-child(7) {
-  transition-delay: 0.3s;
+.projects .intro-content .header-content h1:nth-child(4) {
+  animation-delay: 0.75s;
 }
-.header-content h1:nth-child(8) {
-  transition-delay: 0.35s;
+.projects .intro-content .header-content h1:nth-child(5) {
+  animation-delay: 0.05s;
 }
+.projects .intro-content .header-content h1:nth-child(6) {
+  animation-delay: 0.22s;
+}
+.projects .intro-content .header-content h1:nth-child(7) {
+  animation-delay: 0.55s;
+}
+.projects .intro-content .header-content h1:nth-child(8) {
+animation-delay: 0.3s;
+}
+
+/* Footer styles */
+
+/* Footer Styles */
+footer {
+  width: 100%;
+  padding: 2rem 0;
+  background-color: var(--dark-red);
+  color: var(--dark-yellow);
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+}
+
+.footer-container {
+  max-width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.footer-links li {
+  margin: 0;
+}
+
+.footer-links a {
+  color: var(--dark-yellow);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--light-yellow);
+}
+
+footer p {
+  margin-top: 1rem;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
 
 
 @media (min-width: 769px) {
@@ -537,8 +621,8 @@ h3 {
   }
 
   #introduction .green-block {
-    height: 90%;
-    max-height: 700px;
+    height: 92%;
+    max-height: 800px;
     border-radius: 14px;
     transform: scale(1);
     transition: transform 300ms ease;
@@ -602,6 +686,14 @@ h3 {
     grid-column: span 2;
   }
 
+  .projects .intro-content .header-content h1 {
+    font-size: 4.5rem;
+  }
+
+  .projects .intro-content .header-content span {
+    margin-top: 65px;
+  }
+
   .projects .project:nth-child(even) {
   background-color: var(--light-green);
   color: var(--dark-yellow);
@@ -623,7 +715,7 @@ h3 {
 
 @media (min-width: 1100px) {
   .projects .intro-content {
-    width: 80%;
+    width: 55%;
     margin: 0 auto;
     display: grid;
     gap: 20px;

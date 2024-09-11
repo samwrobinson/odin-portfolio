@@ -102,21 +102,26 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(textContent);
     observer.observe(period);
   }); 
-  
-// Select all the h1 elements
-const letters = document.querySelectorAll('.header-content h1');
 
-// Create an intersection observer
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      // Add the class 'in-view' to letters when they are in view
-      entry.target.classList.add('in-view');
-    }
-  });
-});
+document.addEventListener("DOMContentLoaded", () => {
+    // Select all the h1 elements
+    const letters = document.querySelectorAll('.header-content h1');
+    const period = document.querySelector('.projects .intro-content .header-content span');
 
-// Observe each letter
-letters.forEach(letter => {
-  observer.observe(letter);
+    // Create an intersection observer
+    const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        // Add the class 'in-view' to letters when they are in view
+        entry.target.classList.add('in-view');
+        }
+    });
+    });
+
+    // Observe each letter
+    letters.forEach(letter => {
+    observer.observe(letter);
+    });
+
+    observer.observe(period);
 });
