@@ -476,9 +476,8 @@ h3 {
 
 /* Initial state of letters */
 .projects .intro-content .header-content h1 {
-  display: inline-block;
   opacity: 0;
-  height: fit-content;
+  display: inline-block;
 }
 
 .projects .intro-content .header-content span {
@@ -495,14 +494,12 @@ h3 {
 
 /* When the section is visible */
 .projects .intro-content .header-content h1.in-view {
-  animation: welcomeText 600ms 1 ease-in-out;
-  opacity: 1;
+  animation: welcomeText 600ms 1 ease-in-out forwards;
 }
 
 /* When the section is visible */
 .projects .intro-content .header-content span.in-view {
   animation: welcomeText 900ms 1 ease-in-out;
-  opacity: 1;
 }
 
 /* Staggered effect for each letter */
@@ -601,7 +598,7 @@ footer p {
     gap: 1rem;
     place-items: center;
     grid-template-columns: repeat(2, minmax(200px, 1fr));
-    grid-template-rows: repeat(2, minmax(200px, 1fr));
+    grid-template-rows: repeat(2, 1fr);
   }
 
   #introduction .intro-content div {
