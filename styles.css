@@ -83,21 +83,57 @@ h3 {
     padding: 0;
     margin: 0;
     display: none;
-    background-color: #333;
+    background-color: #5b5b5bd8;
     position: absolute;
     top: 50px;
     right: 0;
     width: 100%;
+    height: 100%;
     text-align: center;
 }
 .nav-links li {
   padding: 2rem 0;
+  color: var(--dark-yellow);
+  opacity: 0;
 }
+
+.nav-links div {
+  background-color: #00a6a0e1;
+  grid-column: 2 / 3;
+  grid-row: 1 / 8;
+  animation: navLinkSlide 200ms  100ms ease 1;
+  z-index: -10;
+}
+
+.nav-links li:nth-child(2) {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  animation: navItemSlide 600ms  100ms ease 1 forwards;
+}
+
+.nav-links li:nth-child(3) {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  animation: navItemSlide 600ms  150ms ease 1 forwards;
+}
+.nav-links li:nth-child(4) {
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+  animation: navItemSlide 600ms  200ms ease 1 forwards;
+}
+.nav-links li:nth-child(5) {
+  grid-column: 2 / 3;
+  grid-row: 5 / 6;
+  animation: navItemSlide 600ms  250ms ease 1 forwards;
+}
+
 
 .nav-links.active {
     z-index: 100;
-    display: block;
-    animation: headerSlide 300ms ease 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    animation: navBarSlide 650ms ease 1;
 }
 
 /* Landing page section styles */
@@ -442,12 +478,25 @@ h3 {
   margin: 0 5px;
 }
 
+.projects .project .icons .svgs a {
+  padding: 5px;
+}
+
 .projects .project .icons .svgs a:first-child {
   transform: scale(1);
   transition: transform 150ms ease-in-out;
 }
 
 .projects .project .icons .svgs a:first-child:hover {
+  transform: scale(1.5);
+}
+
+.projects .project .icons .svgs a:last-child {
+  transform: scale(1);
+  transition: transform 150ms ease-in-out;
+}
+
+.projects .project .icons .svgs a:last-child:hover {
   transform: scale(1.5);
 }
 
@@ -762,6 +811,51 @@ footer p {
 @media (min-width: 1200px) {
   .projects .intro-content {
     width: 55%;
+  }
+}
+
+@keyframes navBarSlide {
+  from {
+    transform: translateX(150px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-15px);
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes navLinkSlide {
+  from {
+    transform: translateX(150px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.75;
+  }
+  75% {
+    transform: -5px;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes navItemSlide {
+  from {
+    transform: translateX(150px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.75;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
