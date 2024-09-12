@@ -4,8 +4,27 @@ const aboutMe = document.querySelector('.about-me');
 const arrow = document.querySelector('.arrow');
 
 function showLinks() {
-    navLinks.classList.toggle('active');
+    if (navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        navLinks.classList.add('inactive');
+        
+        // Set timeout to apply `display: none` after the reverse animation
+        setTimeout(() => {
+            navLinks.style.display = 'none';
+        }, 650); // Wait for the reverse animation to complete
+    } else {
+        navLinks.style.display = 'grid';
+        navLinks.classList.remove('inactive');
+        navLinks.classList.add('active');
+    }
 }
+
+// Attach the close function to each link
+const navItems = document.querySelectorAll('.nav-links li a');
+navItems.forEach(item => {
+    item.addEventListener('click', showLinks);
+});
+
 
 function showArrow() {
     arrow.classList.toggle('active');
